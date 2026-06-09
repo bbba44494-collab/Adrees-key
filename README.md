@@ -1,11 +1,78 @@
-<div align="center">
+# 🔑 Subscription Key Manager & Licenser | لوحة إدارة مفاتيح اشتراكات وصلاحيات المستخدمين
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+لوحة تحكم احترافية ومثالية مصممة خصيصاً لمطوري البرمجيات ومقدمي الخدمات السحابية وموزعي الأكواد لتوليد وإدارة مفاتيح اشتراكات المستخدمين وتفعيلها زمنيًا ومراقبة الأجهزة المصرح لها بالولوج.
 
-  <h1>Built with AI Studio</h2>
+An elegant, highly-scalable **Subscription Key Manager and Licencer Dashboard** built to generate, control, monitor, and extend user subscriptions with duration types (*Daily, Weekly, Monthly*), comprehensive software permission management, and device limits (HWID tracking), complete with a live interactive **API / SDK verification console simulator**.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+---
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## 🌟 الميزات الأساسية | Key Features
 
-</div>
+* **توليد المفاتيح المتطور (Dynamic Key Generator):**
+  * توليد مفاتيح ترخيص فريدة مشفرة غير قابلة للتخمين (UUID v4).
+  * إمكانية التوليد الفردي أو المجمع دفعة واحدة (Bulk Generation) لغاية 25 مفتاحاً بكبسة زر واحدة.
+  * تعيين فترات اشتراك دقيقة ومحددة: **يومي (24 ساعة)**، **أسبوعي (7 أيام)**، **شهري (30 يوماً)**.
+  * تعيين قيود على عدد الأجهزة المسموح بتشغيل المفتاح عليها في نفس الوقت (Device HWID Limits).
+  * ربط ميزات أو صلاحيات معينة لكل مفتاح (مثل: الوصول الكامل، الأدوات المتقدمة، الحفظ السحابي، الـ API، والنسخ التجريبية).
+
+* **لوحة تحكم وتحليلات ذكية (Analytics Dashboard):**
+  * بطاقات إحصائية حية ومؤشرات أداء (KPIs) لمراقبة المفاتيح النشطة والمخزنة والملغاة.
+  * رسوم بيانية تفاعلية مدعومة بـ `recharts` لعرض نسب الاشتراكات وحالات التفعيل.
+  * سجل عمليات فوري (Operational Audit Trail Live Logs) لمراقبة تفعيل وتداول وتأكيد التراخيص أولاً بأول.
+
+* **إدارة كاملة لقاعدة البيانات (Comprehensive DB Manager):**
+  * تصفية وفلترة متقدمة للبحث عن المفاتيح بواسطة اسم العميل، الترخيص، أو الملاحظة.
+  * إجراءات تحكم فورية: تفعيل المفاتيح، تمديد وتجديد الاشتراكات بصيغة تراكمية، حظر وسحب التراخيص (Revoke) نهائياً، وشطب السجلات.
+  * حفظ محلي آمن ومستمر عن طريق `localStorage` لضمان عدم فقدان تراخيصك أو عملائك عند تحديث المتصفح.
+
+* **محاكي برمجية فحص الأكواد (Live API & SDK Tester Console):**
+  * شاشة تحاكي اتصال تطبيقك أو لعبتك أو موقعك الإلكتروني بخادم الترخيص للتحقق من المفتاح.
+  * كونسول برمجية تفاعلية تستعرض استجابات الـ JSON المختلفة بدقة (200 OK، 404 Not Found، 403 Revoked، 401 Expired، 429 Devices Limit).
+  * نماذج أكواد متكاملة وجاهزة للنسخ والاستخدام لعدة لغات برمجية: **cURL**، **Node.js (Axios)**، **Python (Requests)**.
+
+---
+
+## 🛠️ التقنيات المستخدمة | Tech Stack
+
+* **Front-end:** [React 19](https://react.dev/) & [TypeScript](https://www.typescriptlang.org/)
+* **Styles:** [Tailwind CSS v4](https://tailwindcss.com/)
+* **Builder:** [Vite](https://vite.dev/)
+* **Animations:** [Motion (Framer Motion)](https://motion.dev/)
+* **Charts:** [Recharts](https://recharts.org/)
+* **Icons:** [Lucide React](https://lucide.dev/)
+
+---
+
+## 🚀 تشغيل المشروع محلياً | Local Installation
+
+إذا قمت بتحميل المشروع كملف ZIP وتريد تشغيله على جهازك الشخصي، اتبع الخطوات التالية:
+
+### 1. تثبيت الحزم والمكونات:
+قم بفتح منفذ الأوامر بمجلد المشروع واكتب:
+```bash
+npm install
+```
+
+### 2. تشغيل سيرفر المطورين:
+```bash
+npm run dev
+```
+سيتم تشغيل واجهة الموقع مباشرة على الرابط المحلي: `http://localhost:3000`
+
+### 3. بناء نسخة الإنتاج النهائية:
+```bash
+npm run build
+```
+
+---
+
+## 📤 كيفية الرفع على GitHub عبر AI Studio | Exporting to GitHub
+
+بما أنك قمت بتطوير هذا الموقع داخل بيئة **Google AI Studio**، يمكنك رفعه مباشرة على حسابك في GitHub باتباع الخطوات التالية:
+
+1. انظر للزاوية العلوية أو قائمة الإعدادات (Settings / Export Menu) داخل واجهة **Google AI Studio**.
+2. اختر **Export to GitHub** (تصدير إلى جيت هب).
+3. قم بالموافقة على ربط حسابك في GitHub وإعطاء الصلاحيات المطلوبة.
+4. اختر اسماً للمستودع الجديد (Repository Name) ثم اضغط **Export** وسيتم رفع الكود كاملاً بشكل فوري ومنظم!
+
+مبارك لك المشروع الاحترافي الجاهز للنشر والتداول! 🚀

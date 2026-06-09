@@ -1,0 +1,6 @@
+{
+  "name": "Subscription Key Manager",
+  "description": "لوحة تحكم احترافية لإنشاء وإدارة مفاتيح اشتراكات المستخدمين (يومي، أسبوعي، شهري) وتفعيل الصلاحيات مع واجهة محاكاة واختبار برمجية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
