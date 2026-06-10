@@ -1,13 +1,13 @@
 const { createClient } = require('@supabase/supabase-js');
 const crypto = require('crypto');
 
-// ربط مباشر مع قاعدة بياناتك في Supabase باستخدام متغيرات البيئة لضمان الأمان في Vercel
+// استخدام المتغيرات البيئية لضمان الأمان في Vercel
 const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
     // تفعيل CORS للسماح بالطلبات الخارجية
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,7 +22,10 @@ export default async function handler(req, res) {
         return;
     }
 
-    if (req.method !== 'POST') return res.status(405).send('Method Not Allowed');
+    // عرض رسالة Method Not Allowed عند الدخول من المتصفح (GET)
+    if (req.method !== 'POST') {
+        return res.status(405).send('Method Not Allowed');
+    }
 
     const { user_key, serial } = req.body;
 
@@ -60,13 +63,15 @@ export default async function handler(req, res) {
             else if (keyData.duration === 'weekly') expiry.setDate(expiry.getDate() + 7);
             else if (keyData.duration === 'monthly') expiry.setDate(expiry.getDate() + 30);
 
-            await supabase.from('license_keys').update({
+            const { error: updateError } = await supabase.from('license_keys').update({
                 status: 'active',
                 hwid: serial,
                 activated_at: now.toISOString(),
                 expires_at: expiry.toISOString(),
                 devices_used: 1
             }).eq('key', user_key);
+
+            if (updateError) throw updateError;
 
             // إضافة سجل في system_logs
             await supabase.from('system_logs').insert([{
@@ -112,7 +117,7 @@ export default async function handler(req, res) {
         });
 
     } catch (err) {
-        console.error(err);
-        return res.status(500).json({ status: false, reason: "خطأ في الخادم" });
+        console.error("API Error:", err);
+        return res.status(500).json({ status: false, reason: "خطأ داخلي في الخادم" });
     }
-}
+};
