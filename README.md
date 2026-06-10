@@ -53,6 +53,29 @@ An elegant, highly-scalable **Subscription Key Manager and Licencer Dashboard** 
 npm install
 ```
 
+### 1.1 متغيرات البيئة المطلوبة لربط Supabase
+أضف ملف `.env` في جذر المشروع أو اضبط متغيرات البيئة في نظامك مع القيم التالية (استبدل القيم الحقيقية الخاصة بك):
+
+```
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+ADMIN_EMAIL=admin@local
+ADMIN_PASSWORD=ADREES1997adrees
+```
+
+ملاحظة: لا تضع `SUPABASE_SERVICE_ROLE_KEY` في متغيرات تعتبر عامة أو في الواجهة (client). هذا المفتاح يجب أن يبقى سرياً ويُستخدم فقط في سكربتات الخادم أو محلياً أثناء الإعداد.
+
+### 1.2 إنشاء مستخدم المشرف (Admin)
+لتسجيل مستخدم المشرف في Supabase باستخدام مفتاح الخدمة (service role) شغّل الأمر:
+
+```bash
+npm run create-admin
+```
+
+هذا السكربت يستخدم القيم من `.env` لإنشاء المستخدم `admin` (أو ما مُحدد في `ADMIN_EMAIL`) بكلمة المرور `ADMIN_PASSWORD`.
+
+
 ### 2. تشغيل سيرفر المطورين:
 ```bash
 npm run dev
